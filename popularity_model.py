@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
-track_metadata=pd.read_csv('/home/sachet/AI/song_data.csv')
-count_play = pd.read_csv('/home/sachet/AI/10000.txt', sep='\t', header=None, names=['user','song','play_count'])
+track_metadata=pd.read_csv('/home/sachet/Artificial Intelligence/song_data.csv')
+count_play = pd.read_csv('/home/sachet/Artificial Intelligence/10000.txt', sep='\t', header=None, names=['user','song','play_count'])
 unique_track_metadata = track_metadata.groupby('song_id').max().reset_index()
 user_song_list_count = pd.merge(count_play, unique_track_metadata, how='left', left_on='song', right_on='song_id')
 user_song_list_count.rename(columns={'play_count':'listen_count'},inplace=True)
