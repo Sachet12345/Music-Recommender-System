@@ -25,7 +25,8 @@ song_subset = list(play_count.index[:5000])
 user_subset = list(user_song_list_count.loc[user_song_list_count.song.isin(song_subset), 'user'].unique())
 user_song_list_count_sub = user_song_list_count[user_song_list_count.song.isin(song_subset)]
 
-user_id = list(user_song_list_count_sub.user)[7]
+user_id = list(user_song_list_count_sub.user)[7] #Insert user id here 
+
 user_data = user_song_list_count_sub[user_song_list_count_sub['user'] == user_id]
 user_songs = list(user_data['title'].unique())
 all_songs =list(user_song_list_count_sub['title'].unique())
@@ -35,11 +36,37 @@ for i in range(0, len(user_songs)):
     item_data = user_song_list_count_sub[user_song_list_count_sub['title'] == user_songs[i]]
     item_users = set(item_data['user'].unique())
     user_songs_users.append(item_users)
-            
+
+#display(user_songs_users)
+
 cooccurence_matrix = np.matrix(np.zeros(shape=(len(user_songs), len(all_songs))), float)
 for i in range(0,len(all_songs)):
-        songs_i_data = user_song_list_count_sub[user_song_list_count_sub['title'] == all_songs
+        songs_i_data = user_song_list_count_sub[user_song_list_count_sub['title'] == all_songs[i]]
         users_i = set(songs_i_data['user'].unique())
         for j in range(0,len(user_songs)):       
             users_j = user_songs_users[j]
+            users_intersection = users_i.intersection(users_j)
             
+            if len(users_intersection) != 0:
+                users_union = users_i.union(users_j)
+                cooccurence_matrix[j,i] = float(len(users_intersection))/float(len(users_union))
+            else:
+                cooccurence_matrix[j,i] = 0
+
+user_sim_scores = cooccurence_matrix.sum(axis=0)/float(cooccurence_matrix.shape[0])
+user_sim_scores = np.array(user_sim_scores)[0].tolist()
+sort_index = sorted(((e,i) for i,e in enumerate(list(user_sim_scores))), reverse=True)
+
+columns = ['user_id', 'song', 'score', 'rank']
+df = pd.DataFrame(columns=columns)
+
+rank = 1 
+for i in range(0,len(sort_index)):
+    if ~np.isnan(sort_index[i][0]) and all_songs[sort_index[i][1]] not in user_songs and rank <= 10:
+        df.loc[len(df)]=[user_id,all_songs[sort_index[i][1]],sort_index[i][0],rank]
+        rank = rank+1
+        
+if df.shape[0] == 0:
+    print("The current user has no songs for training the item similarity based recommendation model.")
+else:
+    print(df)
