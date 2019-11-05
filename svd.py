@@ -13,12 +13,17 @@ import math as mt
 from scipy.sparse import csc_matrix
 from scipy.sparse import coo_matrix
 
-track_metadata=pd.read_csv('/home/sachet/Artificial Intelligence/song_data.csv')
-count_play = pd.read_csv('/home/sachet/Artificial Intelligence/10000.txt', sep='\t', header=None, names=['user','song','play_count'])
-unique_track_metadata = track_metadata.groupby('song_id').max().reset_index()
-user_song_list_count = pd.merge(count_play, unique_track_metadata, how='left', left_on='song', right_on='song_id')
-user_song_list_count.rename(columns={'play_count':'listen_count'},inplace=True)
-del(user_song_list_count['song_id'])
+def preprocessing():
+    """Function to return user_song_list_count which has data of all users and the count of songs the user has listened to."""
+    track_metadata = pd.read_csv('/home/sachet/Artificial Intelligence/song_data.csv')
+    count_play = pd.read_csv('/home/sachet/Artificial Intelligence/10000.txt', sep='\t', header=None, names=['user','song','play_count'])
+    unique_track_metadata = track_metadata.groupby('song_id').max().reset_index()
+    user_song_list = pd.merge(count_play, unique_track_metadata, how='left', left_on='song', right_on='song_id')
+    user_song_list.rename(columns={'play_count':'listen_count'},inplace=True)
+    del(user_song_list['song_id'])
+    return user_song_list
+    
+user_song_list_count = preprocessing()
 
 user_song_list_listen = user_song_list_count[['user','listen_count']].groupby('user').sum().reset_index()
 user_song_list_listen.rename(columns={'listen_count':'total_listen_count'},inplace=True)
