@@ -41,7 +41,7 @@ Please install the following libraries:\
 *sklearn*\
 *pandas*\
 *numpy*
-## Group:\
+## Group:
 Sachet Sourav- [@Sachet12345](https://github.com/Sachet12345)\
 Koushik Swaminathan- [@imkoushik22](https://github.com/imkoushik22)\
 Vijay Krishna- [@imkoushik22](https://github.com/imkoushik22)
