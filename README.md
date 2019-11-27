@@ -36,3 +36,8 @@ We would be using the database provided by Kaggle competition, refer
 https://www.kaggle.com/c/msdchallenge/data
 It includes metadata (e.g., artist identifiers, tags,etc) , audio content analysis
 and standardized identifiers.
+## Libraries
+Please install the following libraries:
+*sklearn*
+*pandas*
+*numpy*
