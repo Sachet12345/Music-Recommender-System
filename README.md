@@ -42,7 +42,7 @@ Please install the following libraries:\
 *pandas*\
 *numpy*
 ## Instructions to run the code:
-Run any model with the command python model_name.py. The User to be used for predictions can be changed by changing user_id vsriable in the code.
+Run any model with the command python model_name.py. The User to be used for predictions can be changed by changing the user_id variable in the code.
 ## Group:
 Sachet Sourav- [@Sachet12345](https://github.com/Sachet12345)\
 Koushik Swaminathan- [@imkoushik22](https://github.com/imkoushik22)\
