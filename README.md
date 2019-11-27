@@ -37,11 +37,11 @@ https://www.kaggle.com/c/msdchallenge/data
 It includes metadata (e.g., artist identifiers, tags,etc) , audio content analysis
 and standardized identifiers.
 ## Libraries
-Please install the following libraries:
+Please install the following libraries:\
 *sklearn*\
 *pandas*\
-*numpy*\
-## Group:
+*numpy*
+## Group:\
 Sachet Sourav- [@Sachet12345](https://github.com/Sachet12345)\
 Koushik Swaminathan- [@imkoushik22](https://github.com/imkoushik22)\
-Vijay Krishna- [@imkoushik22](https://github.com/imkoushik22)\
+Vijay Krishna- [@imkoushik22](https://github.com/imkoushik22)
