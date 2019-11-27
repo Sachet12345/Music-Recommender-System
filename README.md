@@ -41,6 +41,8 @@ Please install the following libraries:\
 *sklearn*\
 *pandas*\
 *numpy*
+## Instructions to run the code:
+Run any model with the command python model_name.py. The User to be used for predictions can be changed by changing user_id vsriable in the code.
 ## Group:
 Sachet Sourav- [@Sachet12345](https://github.com/Sachet12345)\
 Koushik Swaminathan- [@imkoushik22](https://github.com/imkoushik22)\
