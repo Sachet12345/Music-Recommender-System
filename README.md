@@ -38,6 +38,10 @@ It includes metadata (e.g., artist identifiers, tags,etc) , audio content analys
 and standardized identifiers.
 ## Libraries
 Please install the following libraries:
-1.*sklearn*
-2.*pandas*
-3.*numpy*
+*sklearn*
+*pandas*
+*numpy*
+## Group:
+Sachet Sourav- [@Sachet12345](https://github.com/Sachet12345)
+Koushik Swaminathan- [@imkoushik22](https://github.com/imkoushik22)
+Vijay Krishna- 
